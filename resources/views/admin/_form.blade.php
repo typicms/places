@@ -36,7 +36,7 @@
     </script>
 @endpush
 
-<x-core::header :$model :backUrl="$model->indexUrl()" :backLabel="__('Places')" :defaultTitle="__('New place')" />
+<x-core::header :$model :back-url="$model->indexUrl()" :back-label="__('Places')" :default-title="__('New place')" />
 
 <div class="form-body">
     <x-core::form-errors />
