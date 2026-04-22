@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace TypiCMS\Modules\Places\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Appends;
 use Illuminate\Database\Eloquent\Attributes\ObservedBy;
 use Illuminate\Database\Eloquent\Attributes\Unguarded;
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -67,6 +68,7 @@ use TypiCMS\Translatable\HasTranslations;
  */
 #[ObservedBy([SlugObserver::class, TipTapHTMLObserver::class])]
 #[Unguarded]
+#[Appends(['thumb'])]
 class Place extends Model
 {
     use HasAdminUrls;
@@ -81,8 +83,6 @@ class Place extends Model
     use Historable;
     use Navigable;
     use Publishable;
-
-    protected $appends = ['thumb'];
 
     /** @var array<string> */
     public array $translatable = [
