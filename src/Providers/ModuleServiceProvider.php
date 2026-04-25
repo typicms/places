@@ -21,23 +21,26 @@ class ModuleServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/places.php');
 
-        $this->loadViewsFrom(__DIR__.'/../../resources/views/', 'places');
-
         $this->publishes([
             __DIR__.'/../../database/migrations/create_places_table.php.stub' => getMigrationFileName(
                 'create_places_table',
             ),
         ], 'typicms-migrations');
-        $this->publishes([__DIR__.'/../../resources/views' => resource_path('views/vendor/places')], 'typicms-views');
+        $this->publishes([
+            __DIR__.'/../../resources/views/admin/places' => resource_path('views/admin/places'),
+        ], ['typicms-views', 'typicms-admin-views', 'typicms-admin-places-views']);
+        $this->publishes([
+            __DIR__.'/../../resources/views/public/places' => resource_path('views/public/places'),
+        ], ['typicms-views', 'typicms-public-views', 'typicms-public-places-views']);
         $this->publishes([__DIR__.'/../../resources' => resource_path()], 'typicms-resources');
         $this->publishes([__DIR__.'/../../public' => public_path()], 'typicms-public');
 
-        View::composer('core::admin._sidebar', SidebarViewComposer::class);
+        View::composer('admin::core._sidebar', SidebarViewComposer::class);
 
         /*
          * Add the page in the view.
          */
-        View::composer('places::public.*', function ($view): void {
+        View::composer('public::places.*', function ($view): void {
             $view->page = getPageLinkedToModule('places');
         });
     }

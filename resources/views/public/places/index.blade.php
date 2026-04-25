@@ -1,4 +1,4 @@
-@extends('pages::public.master')
+@extends('public::pages.master')
 
 @section('bodyClass', 'body-places body-places-index body-page body-page-' . $page->id)
 
@@ -18,15 +18,15 @@
     ]" />
     <div class="page-body">
         <div class="page-body-container">
-            @include('pages::public._main-content', ['page' => $page])
-            @include('files::public._document-list', ['model' => $page])
-            @include('files::public._image-list', ['model' => $page])
+            @include('public::pages._main-content', ['page' => $page])
+            @include('public::files._document-list', ['model' => $page])
+            @include('public::files._image-list', ['model' => $page])
         </div>
 
         <div class="map" id="map" data-url="{{ route($lang . '::places-json') }}" data-button-label="@lang('Read more')"></div>
 
         <div class="page-body-container">
-            @includeWhen($models->count() > 0, 'places::public._list', ['items' => $models])
+            @includeWhen($models->count() > 0, 'public::places._list', ['items' => $models])
         </div>
     </div>
 @endsection
