@@ -1,6 +1,6 @@
 @extends('public::core.master')
 
-@section('title', $model->title . ' – ' . __('Places') . ' – ' . $websiteTitle)
+@section('title', $model->title . ' – ' . __('Places') . ' – ' . websiteTitle())
 @section('ogTitle', $model->title ?? '')
 @section('description', $model->summary ?? '')
 @section('ogImage', $model->ogImageUrl())
@@ -39,7 +39,7 @@
                 ],
             ]" />
             @if ($model->latitude && $model->longitude)
-                <div class="map" id="map" data-url="{{ route($lang . '::place-json', $model->slug) }}" data-no-button="false"></div>
+                <div class="map" id="map" data-url="{{ route(app()->getLocale() . '::place-json', $model->slug) }}" data-no-button="false"></div>
             @endif
 
             @if ($model->image)
