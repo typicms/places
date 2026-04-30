@@ -1,9 +1,5 @@
-@extends('admin::core.master')
-
-@section('title', __('New place'))
-
-@section('content')
+<x-core::layouts.admin :title="__('New place')">
     {!! BootForm::open()->action(route('admin::index-places'))->addClass('form') !!}
     @include('admin::places._form')
     {!! BootForm::close() !!}
-@endsection
+</x-core::layouts.admin>
