@@ -1,12 +1,11 @@
-@extends('public::pages.master')
+<x-core::layouts.page
+    :page="$page"
+    :body-class="'body-places body-places-index body-page body-page-' . $page->id"
+>
+    @push('js')
+        <script src="{{ asset('//maps.googleapis.com/maps/api/js?key=' . config('services.gmaps.key') . '&callback=initMap&language=' . app()->getLocale()) }}" defer></script>
+    @endpush
 
-@section('bodyClass', 'body-places body-places-index body-page body-page-' . $page->id)
-
-@push('js')
-    <script src="{{ asset('//maps.googleapis.com/maps/api/js?key=' . config('services.gmaps.key') . '&callback=initMap&language=' . app()->getLocale()) }}" defer></script>
-@endpush
-
-@section('page')
     <x-core::json-ld :schema="[
         '@context' => 'https://schema.org',
         '@type' => 'ItemList',
@@ -29,4 +28,4 @@
             @includeWhen($models->count() > 0, 'public::places._list', ['items' => $models])
         </div>
     </div>
-@endsection
+</x-core::layouts.page>

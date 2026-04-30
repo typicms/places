@@ -1,16 +1,16 @@
-@extends('public::core.master')
+<x-core::layouts.public
+    :title="$model->title . ' – ' . __('Places') . ' – ' . websiteTitle()"
+    :og-title="$model->title ?? ''"
+    :description="$model->summary ?? ''"
+    :og-image="$model->ogImageUrl()"
+    :body-class="'body-places body-place-' . $model->id . ' body-page body-page-' . $page->id"
+    :page="$page"
+    :model="$model"
+>
+    @push('js')
+        <script src="{{ asset('//maps.googleapis.com/maps/api/js?key=' . config('services.gmaps.key') . '&callback=initMap&language=' . app()->getLocale()) }}" defer></script>
+    @endpush
 
-@section('title', $model->title . ' – ' . __('Places') . ' – ' . websiteTitle())
-@section('ogTitle', $model->title ?? '')
-@section('description', $model->summary ?? '')
-@section('ogImage', $model->ogImageUrl())
-@section('bodyClass', 'body-places body-place-' . $model->id . ' body-page body-page-' . $page->id)
-
-@push('js')
-    <script src="{{ asset('//maps.googleapis.com/maps/api/js?key=' . config('services.gmaps.key') . '&callback=initMap&language=' . app()->getLocale()) }}" defer></script>
-@endpush
-
-@section('content')
     <article class="place">
         <header class="place-header">
             <div class="place-header-container">
@@ -86,4 +86,4 @@
             @include('public::files._image-list')
         </div>
     </article>
-@endsection
+</x-core::layouts.public>
