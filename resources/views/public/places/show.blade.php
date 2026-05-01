@@ -21,7 +21,8 @@
             </div>
         </header>
         <div class="place-body">
-            <x-core::json-ld :schema="[
+            <x-core::json-ld
+                :schema="[
                 '@context' => 'https://schema.org',
                 '@type' => 'Place',
                 'name' => $model->title,
@@ -37,7 +38,8 @@
                     '@type' => 'WebPage',
                     '@id' => $model->url(),
                 ],
-            ]" />
+            ]"
+            />
             @if ($model->latitude && $model->longitude)
                 <div class="map" id="map" data-url="{{ route(app()->getLocale() . '::place-json', $model->slug) }}" data-no-button="false"></div>
             @endif

@@ -44,35 +44,22 @@
     <div class="row">
         <div class="col-lg-8">
             <x-core::title-and-slug-fields />
-            <div class="mb-3">
-                {!! TranslatableBootForm::hidden('status')->value(0) !!}
-                {!! TranslatableBootForm::checkbox(__('Published'), 'status') !!}
+            <div class="mb-3">{!! TranslatableBootForm::hidden('status')->value(0) !!} {!! TranslatableBootForm::checkbox(__('Published'), 'status') !!}</div>
+
+            <div class="row gx-3">
+                <div class="col-sm-6">{!! BootForm::email(__('Email'), 'email')->autocomplete('off') !!}</div>
+                <div class="col-sm-6">{!! BootForm::text(__('Website'), 'website')->placeholder('https://') !!}</div>
             </div>
 
             <div class="row gx-3">
-                <div class="col-sm-6">
-                    {!! BootForm::email(__('Email'), 'email')->autocomplete('off') !!}
-                </div>
-                <div class="col-sm-6">
-                    {!! BootForm::text(__('Website'), 'website')->placeholder('https://') !!}
-                </div>
-            </div>
-
-            <div class="row gx-3">
-                <div class="col-sm-6">
-                    {!! BootForm::text(__('Phone'), 'phone')->autocomplete('off') !!}
-                </div>
+                <div class="col-sm-6">{!! BootForm::text(__('Phone'), 'phone')->autocomplete('off') !!}</div>
             </div>
 
             {!! BootForm::textarea(__('Address'), 'address')->rows(4)->autocomplete('off') !!}
 
             <div class="row gx-3">
-                <div class="col-md-5">
-                    {!! BootForm::text(__('Latitude'), 'latitude') !!}
-                </div>
-                <div class="col-md-5">
-                    {!! BootForm::text(__('Longitude'), 'longitude') !!}
-                </div>
+                <div class="col-md-5">{!! BootForm::text(__('Latitude'), 'latitude') !!}</div>
+                <div class="col-md-5">{!! BootForm::text(__('Longitude'), 'longitude') !!}</div>
                 <div class="col-md-2">
                     <div class="mb-3">
                         <label class="form-label" for="geocode-button">&nbsp;</label>
