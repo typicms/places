@@ -1,3 +1,4 @@
+@use('TypiCMS\Modules\Core\Support\ModuleUrl')
 <x-core::layouts.public
     :title="$model->title . ' – ' . __('Places') . ' – ' . websiteTitle()"
     :og-title="$model->title ?? ''"
@@ -41,7 +42,7 @@
             ]"
             />
             @if ($model->latitude && $model->longitude)
-                <div class="map" id="map" data-url="{{ route(app()->getLocale() . '::place-json', $model->slug) }}" data-no-button="false"></div>
+                <div class="map" id="map" data-url="{{ ModuleUrl::to('places', [$model->slug, 'json']) }}" data-no-button="false"></div>
             @endif
 
             @if ($model->image)
