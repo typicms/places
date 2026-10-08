@@ -42,31 +42,31 @@
     <x-core::form-errors />
 
     <div class="row">
-        <div class="col-lg-8">
+        <div class="lg:col-8">
             <x-core::title-and-slug-fields />
-            <div class="mb-3">
+            <div class="mb-5">
                 <x-transbootform::checkbox :label="__('Published')" name="status" :unchecked-value="0" />
             </div>
 
-            <div class="row gx-3">
-                <div class="col-sm-6"><x-bootform::email :label="__('Email')" name="email" autocomplete="off" /></div>
-                <div class="col-sm-6"><x-bootform::text :label="__('Website')" name="website" placeholder="https://" /></div>
+            <div class="row gx-5">
+                <div class="sm:col-6"><x-bootform::email :label="__('Email')" name="email" autocomplete="off" /></div>
+                <div class="sm:col-6"><x-bootform::text :label="__('Website')" name="website" placeholder="https://" /></div>
             </div>
 
-            <div class="row gx-3">
-                <div class="col-sm-6"><x-bootform::text :label="__('Phone')" name="phone" autocomplete="off" /></div>
+            <div class="row gx-5">
+                <div class="sm:col-6"><x-bootform::text :label="__('Phone')" name="phone" autocomplete="off" /></div>
             </div>
 
             <x-bootform::textarea :label="__('Address')" name="address" rows="4" autocomplete="off" />
 
-            <div class="row gx-3">
-                <div class="col-md-5"><x-bootform::text :label="__('Latitude')" name="latitude" /></div>
-                <div class="col-md-5"><x-bootform::text :label="__('Longitude')" name="longitude" /></div>
-                <div class="col-md-2">
-                    <div class="mb-3">
+            <div class="row gx-5">
+                <div class="md:col-5"><x-bootform::text :label="__('Latitude')" name="latitude" /></div>
+                <div class="md:col-5"><x-bootform::text :label="__('Longitude')" name="longitude" /></div>
+                <div class="md:col-2">
+                    <div class="mb-5">
                         <label class="form-label" for="geocode-button">&nbsp;</label>
                         <p class="mb-0">
-                            <button class="btn btn-secondary w-100" id="geocode-button" type="button">Chercher</button>
+                            <button class="btn-solid theme-secondary w-100" id="geocode-button" type="button">Chercher</button>
                         </p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
             <x-transbootform::textarea :label="__('Summary')" name="summary" rows="4" />
             <x-core::tiptap-editors :model="$model" name="body" :label="__('Body')" />
         </div>
-        <div class="col-lg-4">
+        <div class="lg:col-4">
             <div class="right-column">
                 <file-manager></file-manager>
                 <file-field type="image" field="image_id" :init-file="{{ $model->image ?? 'null' }}"></file-field>
