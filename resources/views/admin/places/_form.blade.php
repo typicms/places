@@ -50,7 +50,9 @@
 
             <div class="row gx-5">
                 <div class="sm:col-6"><x-bootform::email :label="__('Email')" name="email" autocomplete="off" /></div>
-                <div class="sm:col-6"><x-bootform::text :label="__('Website')" name="website" placeholder="https://" /></div>
+                <div class="sm:col-6">
+                    <x-bootform::text :label="__('Website')" name="website" placeholder="https://" />
+                </div>
             </div>
 
             <div class="row gx-5">
@@ -66,7 +68,9 @@
                     <div class="mb-5">
                         <label class="form-label" for="geocode-button">&nbsp;</label>
                         <p class="mb-0">
-                            <button class="btn-solid theme-secondary w-100" id="geocode-button" type="button">Chercher</button>
+                            <button class="btn-solid theme-secondary w-100" id="geocode-button" type="button">
+                                Chercher
+                            </button>
                         </p>
                     </div>
                 </div>
@@ -79,7 +83,13 @@
             <div class="right-column">
                 <file-manager></file-manager>
                 <file-field type="image" field="image_id" :init-file="{{ $model->image ?? 'null' }}"></file-field>
-                <file-field type="image" field="og_image_id" :init-file="{{ $model->ogImage ?? 'null' }}" label="@lang('Social Share Image')" hint="1200 × 630 px"></file-field>
+                <file-field
+                    type="image"
+                    field="og_image_id"
+                    :init-file="{{ $model->ogImage ?? 'null' }}"
+                    label="@lang('Social Share Image')"
+                    hint="1200 × 630 px"
+                ></file-field>
                 <files-field :init-files="{{ $model->files }}"></files-field>
             </div>
         </div>
