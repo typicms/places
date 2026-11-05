@@ -1,14 +1,17 @@
 <x-core::layouts.public
-    :title="$model->title . ' – ' . __('Places') . ' – ' . websiteTitle()"
+    :title="$model->title.' – '.__('Places').' – '.websiteTitle()"
     :og-title="$model->title ?? ''"
     :description="$model->summary ?? ''"
     :og-image="$model->ogImageUrl()"
-    :body-class="'body-places body-place-' . $model->id . ' body-page body-page-' . $page->id"
+    :body-class="'body-places body-place-'.$model->id.' body-page body-page-'.$page->id"
     :page="$page"
     :model="$model"
 >
     @push('js')
-        <script src="{{ asset('//maps.googleapis.com/maps/api/js?key=' . config('services.gmaps.key') . '&callback=initMap&language=' . app()->getLocale()) }}" defer></script>
+        <script
+            src="{{ asset('//maps.googleapis.com/maps/api/js?key=' . config('services.gmaps.key') . '&callback=initMap&language=' . app()->getLocale()) }}"
+            defer
+        ></script>
     @endpush
 
     <article class="place">
@@ -41,12 +44,23 @@
             ]"
             />
             @if ($model->latitude && $model->longitude)
-                <div class="map" id="map" data-url="{{ route(app()->getLocale() . '::place-json', $model->slug) }}" data-no-button="false"></div>
+                <div
+                    class="map"
+                    id="map"
+                    data-url="{{ route(app()->getLocale() . '::place-json', $model->slug) }}"
+                    data-no-button="false"
+                ></div>
             @endif
 
             @if ($model->image)
                 <figure class="place-picture">
-                    <img class="place-picture-image" src="{{ $model->image->render(2000) }}" width="{{ $model->image->width }}" height="{{ $model->image->height }}" alt="" />
+                    <img
+                        class="place-picture-image"
+                        src="{{ $model->image->render(2000) }}"
+                        width="{{ $model->image->width }}"
+                        height="{{ $model->image->height }}"
+                        alt=""
+                    />
                     @if ($model->image->description)
                         <figcaption class="place-picture-legend">{{ $model->image->description }}</figcaption>
                     @endif
