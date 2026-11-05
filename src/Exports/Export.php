@@ -20,7 +20,7 @@ use TypiCMS\Modules\Core\Filters\FilterOr;
 use TypiCMS\Modules\Places\Models\Place;
 
 /**
- * @implements WithMapping<mixed>
+ * @implements WithMapping<Place>
  */
 class Export implements FromCollection, ShouldAutoSize, WithColumnFormatting, WithHeadings, WithMapping, WithStrictNullComparison
 {
@@ -37,12 +37,15 @@ class Export implements FromCollection, ShouldAutoSize, WithColumnFormatting, Wi
             ->get();
     }
 
-    /** @return array<int, mixed> */
+    /**
+     * @param  Place  $row
+     * @return array<int, mixed>
+     */
     public function map(mixed $row): array
     {
         return [
-            Date::dateTimeToExcel($row->created_at),
-            Date::dateTimeToExcel($row->updated_at),
+            $row->created_at ? Date::dateTimeToExcel($row->created_at) : null,
+            $row->updated_at ? Date::dateTimeToExcel($row->updated_at) : null,
             $row->status,
             $this->escapeFormula($row->address),
             $this->escapeFormula($row->email),
