@@ -15,7 +15,7 @@ use TypiCMS\Modules\Places\Models\Place;
 
 final class ApiController extends BaseApiController
 {
-    /** @return LengthAwarePaginator<int, mixed> */
+    /** @return LengthAwarePaginator<int, Place> */
     public function index(Request $request): LengthAwarePaginator
     {
         $query = Place::query()->selectFields();
